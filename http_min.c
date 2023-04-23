@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
 	return 0;
 }
 
-/*ÁöÁ¤µÈ Æ÷Æ®¿¡ ¼ö½Å ¼ÒÄÏÀ» ¼³Á¤ÇÏ°í ÁöÁ¤µÈ ¹é·Î±× Å©±âÀÇ ¼ö½Å ¿¬°á*/
+/*ì§€ì •ëœ í¬íŠ¸ì— ìˆ˜ì‹  ì†Œì¼“ì„ ì„¤ì •í•˜ê³  ì§€ì •ëœ ë°±ë¡œê·¸ í¬ê¸°ì˜ ìˆ˜ì‹  ì—°ê²°*/
 void setup_listening_socket(int serv_sock, struct sockaddr_in* serv_adr, int backlog, int port) {
 	memset(serv_adr, 0, sizeof(struct sockaddr_in));
 	serv_adr->sin_family = AF_INET;
@@ -56,7 +56,7 @@ void setup_listening_socket(int serv_sock, struct sockaddr_in* serv_adr, int bac
 		error_handling("listen() error");
 }
 
-/*»õ·Î¿î Å¬¶óÀÌ¾ğÆ® ¿¬°áÀ» ¼ö½ÅÇÏ°í, »õ·Î¿î ½º·¹µå¸¦ ¸¸µé¾î Å¬¶óÀÌ¾ğÆ® ¿äÃ»À» Ã³¸®ÇÔ*/
+/*ìƒˆë¡œìš´ í´ë¼ì´ì–¸íŠ¸ ì—°ê²°ì„ ìˆ˜ì‹ í•˜ê³ , ìƒˆë¡œìš´ ìŠ¤ë ˆë“œë¥¼ ë§Œë“¤ì–´ í´ë¼ì´ì–¸íŠ¸ ìš”ì²­ì„ ì²˜ë¦¬í•¨*/
 void handle_client_connection(int serv_sock, struct sockaddr_in clnt_addr) {
 	int clnt_sock;
 	pthread_t t_id;
@@ -69,7 +69,7 @@ void handle_client_connection(int serv_sock, struct sockaddr_in clnt_addr) {
 	pthread_detach(t_id);
 }
 
-/*http get ¿äÃ»À» Ã³¸®ÇÔ*/
+/*http get ìš”ì²­ì„ ì²˜ë¦¬í•¨*/
 void* handle_client_request(void* arg) {
 	int clnt_sock = *((int*)arg);
 	char req_line[SMALL_BUFF];
@@ -81,7 +81,7 @@ void* handle_client_request(void* arg) {
 	FILE* clnt_write = fdopen(dup(clnt_sock), "w");
 	fgets(req_line, SMALL_BUFF, clnt_read);
 
-	/*HTTP Çì´õ°¡ ¾Æ´Ñ°æ¿ì Á¾·á*/
+	/*HTTP í—¤ë”ê°€ ì•„ë‹Œê²½ìš° ì¢…ë£Œ*/
 	if (strstr(req_line, "HTTP/") == NULL) {
 		send_error(clnt_write);
 		fclose(clnt_read);
@@ -90,7 +90,7 @@ void* handle_client_request(void* arg) {
 	}
 	strcpy(method, strtok(req_line, " /"));
 
-	/*GET ¸Ş¼Òµå°¡ ¾Æ´Ñ°æ¿ì Á¾·á*/
+	/*GET ë©”ì†Œë“œê°€ ì•„ë‹Œê²½ìš° ì¢…ë£Œ*/
 	if (strcmp(method, "GET") != 0) {
 		send_error(clnt_write);
 		fclose(clnt_read);
@@ -98,15 +98,15 @@ void* handle_client_request(void* arg) {
 		return 0;
 	}
 
-	/*ÆÄÀÏ Àü¼Û*/
+	/*íŒŒì¼ ì „ì†¡*/
 	strcpy(file_name, strtok(NULL, " /"));
 	strcpy(ct, content_type(file_name));
-	send_data(clnt_write, ct, file_name); //ÀÔ·Â¹ŞÀº µ¥ÀÌÅÍ¿¡ ÇØ´çÇÏ´Â ÆÄÀÏÀ» Àü¼ÛÇÔ
+	send_data(clnt_write, ct, file_name); //ì…ë ¥ë°›ì€ ë°ì´í„°ì— í•´ë‹¹í•˜ëŠ” íŒŒì¼ì„ ì „ì†¡í•¨
 
 	fclose(clnt_read);
 	return 0;
 }
-/*http Çì´õ¸¦ ¹Ş°í ÁöÁ¤µÈ ÆÄÀÏÀ» Àü¼ÛÇÑ´Ù.*/
+/*http í—¤ë”ë¥¼ ë°›ê³  ì§€ì •ëœ íŒŒì¼ì„ ì „ì†¡í•œë‹¤.*/
 void send_data(FILE* fp, char* ct, char* file_name) {
 	char protocol[] = "HTTP/1.0 200 OK\r\n";
 	char server[] = "Server:Linux Web Server\r\n";
@@ -135,7 +135,7 @@ void send_data(FILE* fp, char* ct, char* file_name) {
 	fclose(fp);
 }
 
-/*Çì´õ¸¦ ÀĞ¾î¿Í¼­ Çì´õÀÇ ÆÄÀÏ¿äÃ» ¹æ½ÄÀÌ htmlÀÌ¸é html ¹İÈ¯ÇÏ°í ¾Æ´Ï¸é text ¹İÈ¯*/
+/*í—¤ë”ë¥¼ ì½ì–´ì™€ì„œ í—¤ë”ì˜ íŒŒì¼ìš”ì²­ ë°©ì‹ì´ htmlì´ë©´ html ë°˜í™˜í•˜ê³  ì•„ë‹ˆë©´ text ë°˜í™˜*/
 char* content_type(char* file) {
 	char extension[SMALL_BUFF];
 	char file_name[SMALL_BUFF];
@@ -150,13 +150,13 @@ char* content_type(char* file) {
 		return "text/plain";
 }
 
-/*¿¡·¯°¡ »ı°åÀ»½Ã È­¸é Ãâ·Â*/
+/*ì—ëŸ¬ê°€ ìƒê²¼ì„ì‹œ í™”ë©´ ì¶œë ¥*/
 void send_error(FILE* fp) {
 	char protocol[] = "HTTP/1.0 400 Bad Request\r\n";
 	char server[] = "Server:Linux Web Server\r\n";
 	char cnt_len[] = "Content-length:2048\r\n";
 	char cnt_type[] = "Content-type:text/html\r\n\r\n";
-	char content[] = "<html><head><title>NETWORK</title><head>""<body><font size+=10><br>¿À·ù ¹ß»ı ¿äÃ» ÆÄÀÏ¸í ¹× ¿äÃ» ¹æ½Ä È®ÀÎ""</font></body></html>";
+	char content[] = "<html><head><title>NETWORK</title><head>""<body><font size+=10><br>ì˜¤ë¥˜ ë°œìƒ ìš”ì²­ íŒŒì¼ëª… ë° ìš”ì²­ ë°©ì‹ í™•ì¸""</font></body></html>";
 
 	fputs(protocol, fp);
 	fputs(server, fp);
@@ -166,7 +166,7 @@ void send_error(FILE* fp) {
 	fflush(fp);
 }
 
-/*¿À·ù ¸Ş½ÃÁö Ãâ·Â*/
+/*ì˜¤ë¥˜ ë©”ì‹œì§€ ì¶œë ¥*/
 void error_handling(char* message) {
 	fputs(message, stderr);
 	fputc('\n', stderr);
