@@ -1,6 +1,6 @@
 # TSL상에서 작동하는 HTTPS Web_Server
 HTTP -> HTTPS -> Domain connect HTTPS
-캡스톤 디자인으로 진행한 Linux에서 openssl을 활용한 https Web Server입니다.
+캡스톤 디자인으로 진행한 TLS상에서 작동하는 https Web Server
 
 This is a https web server using openssl on Linux that was developed as a capstone design project.
 
