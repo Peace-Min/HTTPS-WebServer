@@ -1,6 +1,6 @@
 # TSL상에서 작동하는 HTTPS Web_Server
 ---
-## 팀원들과 깃허브 협업한 주소입니다.</br>
+## 팀원들과 Github 협업한 주소입니다.</br>
 https://github.com/RoughBoy0723/https_with_openssl/tree/min
 </br></br>
 **구현 계획**
