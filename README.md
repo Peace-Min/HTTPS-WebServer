@@ -7,8 +7,7 @@ https://github.com/RoughBoy0723/https_with_openssl/tree/min
  * HTTP -> HTTPS -> Domain connect HTTP -> Raspberry Pi Porting
 </br></br>
 
-# Troubleshooting
-## **Trouble**</br>
+# **<span style="color:red"> Troubleshooting</span>**</br>
 ![Alt text](handshake_err.JPG)
  </br>**사설 인증서를 통해 localhost로 접속 시</br> Hand_Shake error 발생후 connect되는 문제가 있었습니다.**</br>
 </br>**해결방안 생각해보기**
@@ -20,7 +19,7 @@ https://github.com/RoughBoy0723/https_with_openssl/tree/min
 
 ***사설 인증서가 가장 유력한 문제라고 생각하였습니다.***</br>
 비록 Localhost라고 할지라도 Chrom, Firefox 등등 인터넷 브라우저는
-</br>사설 인증서를 인정해주지 않는다는 걸 알았습니다.
+사설 인증서를 인정해주지 않는다는 걸 알았습니다.
 </br>문제 해결을 위해 도메인 및 공인인증서를 발급받아보았습니다.
 </br></br>예상대로 Hand-Shake error의 원인이라고 생각한 사설인증서가</br> Trouble의 원인이이였고, 공인 인증서발급을 받아 문제를 해결하였습니다.
 </br>
