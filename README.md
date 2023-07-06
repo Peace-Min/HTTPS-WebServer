@@ -24,5 +24,6 @@ https://github.com/RoughBoy0723/https_with_openssl/tree/min
 </br></br>예상대로 Hand-Shake error의 원인이라고 생각한 사설인증서가</br> Trouble의 원인이이였고, 공인 인증서발급을 받아 Hand_Shake error를 해결하였습니다.
 </br>
 
+
 ![Alt text](/image/domain.png)
 ![Alt text](/image/domain_wireshark.png)
