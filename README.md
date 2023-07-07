@@ -4,7 +4,7 @@
 https://github.com/RoughBoy0723/https_with_openssl/tree/min
 </br></br>
 **구현 계획**
- * HTTP -> HTTPS -> Domain connect HTTP -> PHP and Raspberry Pi Porting 
+ * HTTP -> HTTPS -> Domain connect HTTP -> PHP and Raspberry Pi Porting
 </br></br>
 
 # **<span style="color:red"> Troubleshooting</span>**</br>
