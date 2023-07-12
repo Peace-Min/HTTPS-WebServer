@@ -18,7 +18,7 @@ https://github.com/RoughBoy0723/https_with_openssl/tree/min
 Localhost라고 할지라도 Chrom, Firefox 등등 인터넷 브라우저는 사설 인증서를 인정해주지 않는다는 걸 알게 되었습니다.</br></br>
 예상대로 Hand-Shake error의 원인이라고 생각한 사설인증서가 Trouble의 원인이이였고,</br> 공인 인증서발급을 받아 Hand_Shake error를 해결하였습니다.
 </br>
----
 
+---
 ![Alt text](/image/domain.png)
 ![Alt text](/image/domain_wireshark.png)
