@@ -10,7 +10,7 @@ https://github.com/RoughBoy0723/https_with_openssl/tree/min
 # **<span style="color:red"> Troubleshooting</span>**</br>
 ![Alt text](/image/handshake_err.JPG)
  </br>
- ## 사설 인증서를 통해 localhost로 접속 시 Hand_Shake error 발생후 connect되는 문제 발생</br></br>
+ ## 사설 인증서를 통해 localhost로 접속 시 Hand_Shake error </br></br>
  ### **해결방안 생각해보기**
  * Open Source인 OpenSSL의 HandShake의 역할을 하는 함수인 SSL_accept Code review</br></br>
  * Linux에서 Curl(Client url) -k을 통해 localhost 접속 시 handshake error 발생 X.</br>curl -k는 SSL/TLS 인증서의 유효성 검사를 건너뛰고 연결을 하는 명령어 </br></br>
